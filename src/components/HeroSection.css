@@ -1,17 +1,18 @@
 .hero-scroll-container {
-  height: 150vh; /* Provides the scroll space for the transition */
+  min-height: 100vh;
   position: relative;
   width: 100%;
-}
-
-.hero-sticky-layer {
-  position: sticky;
-  top: 0;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  padding-top: 80px; /* Accounts for navbar */
+}
+
+.hero-sticky-layer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-content {
@@ -22,8 +23,6 @@
   width: 100%;
   max-width: 900px;
   padding: 0 20px;
-  transform-style: preserve-3d;
-  will-change: transform, opacity, filter;
 }
 
 .hero-badge {

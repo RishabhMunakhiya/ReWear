@@ -10,26 +10,22 @@ const HeroSection = () => {
     offset: ["start start", "end start"]
   });
 
-  // Cinematic Dimensional Exit Transformations
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.5]);
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
-  const opacity = useTransform(scrollYProgress, [0.3, 1], [1, 0]);
-  const blur = useTransform(scrollYProgress, [0, 1], ["blur(0px)", "blur(40px)"]);
-  const translateZ = useTransform(scrollYProgress, [0, 1], [0, 300]);
+  // Premium SaaS Parallax Transformations
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, -120]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const blur = useTransform(scrollYProgress, [0, 0.8], ["blur(0px)", "blur(12px)"]);
 
   return (
     <div ref={containerRef} className="hero-scroll-container">
       <div className="hero-sticky-layer">
-        <motion.div 
-          className="hero-content"
-          style={{
-            scale,
-            y,
-            opacity,
-            filter: blur,
-            z: translateZ
-          }}
-        >
+        <motion.div style={{ scale, y, opacity, filter: blur, width: '100%', display: 'flex', justifyContent: 'center' }}>
+          <motion.div 
+            className="hero-content"
+            initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+          >
           <div className="hero-badge">NEW SPRING UPDATE</div>
           <h1 className="hero-title">
             Your wardrobe deserves<br />to stand out
@@ -39,6 +35,7 @@ const HeroSection = () => {
             polished, sustainable exchanges in seconds.
           </p>
           <button className="hero-btn">Watch video</button>
+          </motion.div>
         </motion.div>
       </div>
     </div>
