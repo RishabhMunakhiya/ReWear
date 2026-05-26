@@ -1,0 +1,196 @@
+.navbar-premium {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  padding: 24px 0;
+  transition: padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 40px); /* Extend below the actual navbar */
+  z-index: -1;
+  background: transparent;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  /* Fades out the blur smoothly in the extended bottom 40px */
+  mask-image: linear-gradient(to bottom, black 0%, black calc(100% - 40px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black calc(100% - 40px), transparent 100%);
+  transition: background 0.4s ease, backdrop-filter 0.4s ease, -webkit-backdrop-filter 0.4s ease;
+  pointer-events: none;
+}
+
+.navbar-premium.scrolled {
+  padding: 16px 0;
+}
+
+.navbar-premium.scrolled::before {
+  background: rgba(255, 255, 255, 0.015);
+  backdrop-filter: blur(24px) saturate(120%);
+  -webkit-backdrop-filter: blur(24px) saturate(120%);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.brand-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 90deg, #ffffff 90deg);
+}
+
+.nav-links-desktop {
+  display: flex;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 6px;
+  border-radius: 30px;
+}
+
+.nav-link {
+  position: relative;
+  padding: 8px 20px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  z-index: 1;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
+.nav-link-text {
+  position: relative;
+  z-index: 2;
+}
+
+.nav-hover-pill {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  z-index: 1;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-waitlist {
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.nav-waitlist span {
+  position: relative;
+  z-index: 2;
+}
+
+.waitlist-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(0, 243, 255, 0.8) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
+  z-index: 1;
+}
+
+.nav-waitlist:hover {
+  border-color: rgba(0, 243, 255, 0.5);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+}
+
+.nav-waitlist:hover .waitlist-glow {
+  width: 150px;
+  height: 150px;
+  opacity: 0.3;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: rgba(5, 5, 8, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-link {
+  padding: 20px 5%;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  font-size: 1.1rem;
+}
+
+@media (max-width: 968px) {
+  .nav-links-desktop {
+    display: none;
+  }
+  .mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-waitlist {
+    display: none; /* Can be hidden on mobile or kept depending on design */
+  }
+}
