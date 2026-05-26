@@ -1,6 +1,27 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useEffect } from 'react';
+import { motion, useInView, animate } from 'framer-motion';
 import './AboutSection.css';
+
+const AnimatedNumber = ({ value, suffix = "" }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+
+  useEffect(() => {
+    if (inView) {
+      animate(0, value, {
+        duration: 2.5,
+        ease: [0.16, 1, 0.3, 1], // cinematic ease out
+        onUpdate: (latest) => {
+          if (ref.current) {
+            ref.current.textContent = Math.round(latest) + suffix;
+          }
+        }
+      });
+    }
+  }, [inView, value, suffix]);
+
+  return <span ref={ref}>0{suffix}</span>;
+};
 
 const AboutSection = () => {
   return (
@@ -29,7 +50,7 @@ const AboutSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <div className="card-glow"></div>
-            <h3 className="card-stat">500K+</h3>
+            <h3 className="card-stat"><AnimatedNumber value={500} suffix="K+" /></h3>
             <p className="card-label">Items Exchanged</p>
           </motion.div>
           
@@ -41,7 +62,7 @@ const AboutSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="card-glow"></div>
-            <h3 className="card-stat">2M lbs</h3>
+            <h3 className="card-stat"><AnimatedNumber value={2} suffix="M lbs" /></h3>
             <p className="card-label">CO2 Prevented</p>
           </motion.div>
 
