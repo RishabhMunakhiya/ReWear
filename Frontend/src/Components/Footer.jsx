@@ -15,15 +15,14 @@ const Footer = () => {
           <div className="footer-links">
             <div className="link-group">
               <h4>Platform</h4>
-              <a href="#">Exchange</a>
-              <a href="#">AI Match</a>
-              <a href="#">Pricing</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); console.log('Navigate to Marketplace'); }}>Explore</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); console.log('Navigate to Upload Form'); }}>Upload Item</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); console.log('Navigate to Community Page'); }}>Community</a>
             </div>
             <div className="link-group">
               <h4>Company</h4>
-              <a href="#">About</a>
-              <a href="#">Sustainability</a>
-              <a href="#">Careers</a>
+              <a href="#how-it-works">How It Works</a>
+              <a href="#about">About</a>
             </div>
             <div className="link-group">
               <h4>Connect</h4>
@@ -38,8 +37,8 @@ const Footer = () => {
         <div className="footer-bottom">
           <p>&copy; 2026 ReWear Inc. All rights reserved.</p>
           <div className="footer-legal">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); console.log('Navigate to Privacy Page'); }}>Privacy Policy</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); console.log('Navigate to Terms Page'); }}>Terms of Service</a>
           </div>
         </div>
       </div>

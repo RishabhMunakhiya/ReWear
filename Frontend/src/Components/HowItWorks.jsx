@@ -3,10 +3,11 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import '../Styles/HowItWorks.css';
 
 const steps = [
-  { title: "Digitize", desc: "Upload clothes via AI scan." },
-  { title: "Match", desc: "Get ML-driven trade suggestions." },
-  { title: "Exchange", desc: "Seamless P2P transaction." },
-  { title: "Reward", desc: "Earn tokens for sustainability." }
+  { title: "Upload Item", desc: "Take a picture of the clothing you want to exchange." },
+  { title: "AI Verification", desc: "Our system analyzes the brand, condition, and value." },
+  { title: "Find Matches", desc: "Get matched with clothes that fit your exact style and size." },
+  { title: "Exchange Clothing", desc: "Ship your item and receive your new wardrobe piece." },
+  { title: "Earn Points", desc: "Gain sustainability points for reducing your carbon footprint." }
 ];
 
 const HowItWorks = () => {

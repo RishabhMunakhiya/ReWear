@@ -6,6 +6,7 @@ import AboutSection from './Components/AboutSection';
 import ServicesSection from './Components/ServicesSection';
 import FeaturedItems from './Components/FeaturedItems';
 import HowItWorks from './Components/HowItWorks';
+import AIRecommendations from './Components/AIRecommendations';
 import Testimonials from './Components/Testimonials';
 import Footer from './Components/Footer';
 import Navbar from './Components/Navbar';
@@ -29,6 +30,7 @@ function App() {
           <ServicesSection />
           <FeaturedItems />
           <HowItWorks />
+          <AIRecommendations />
           <Testimonials />
           <Footer />
         </div>

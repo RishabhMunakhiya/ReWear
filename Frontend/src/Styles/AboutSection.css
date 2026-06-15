@@ -37,7 +37,7 @@
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 
@@ -86,9 +86,12 @@
 }
 
 .mission-card {
+  grid-column: 1 / -1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .mission-card h3 {

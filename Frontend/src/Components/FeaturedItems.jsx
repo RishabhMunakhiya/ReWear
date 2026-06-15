@@ -3,9 +3,10 @@ import { motion } from 'framer-motion';
 import '../Styles/FeaturedItems.css';
 
 const items = [
-  { name: "Cyberpunk Jacket v2", condition: "Near Mint", price: "120 RX", tag: "Premium" },
-  { name: "Neon Sneakers", condition: "Good", price: "85 RX", tag: "Trending" },
-  { name: "Holographic Visor", condition: "Mint", price: "250 RX", tag: "Rare" },
+  { name: "Vintage Denim Jacket", condition: "Excellent", size: "Medium", category: "Outerwear", points: "150 Pts", owner: "AlexM" },
+  { name: "Oversized Minimalist Hoodie", condition: "Like New", size: "Large", category: "Streetwear", points: "80 Pts", owner: "SamStyles" },
+  { name: "Classic Formal Shirt", condition: "Good", size: "Small", category: "Formal", points: "60 Pts", owner: "Jordan99" },
+  { name: "Y2K Cargo Pants", condition: "Excellent", size: "32", category: "Streetwear", points: "120 Pts", owner: "TaylorV" },
 ];
 
 const FeaturedItems = () => {
@@ -34,15 +35,22 @@ const FeaturedItems = () => {
               transition={{ duration: 0.6, delay: idx * 0.15 }}
             >
               <div className="featured-image-placeholder">
-                <span className="featured-tag">{item.tag}</span>
+                <span className="featured-tag">{item.category}</span>
                 <div className="placeholder-shape"></div>
               </div>
               <div className="featured-info">
                 <h3 className="featured-name">{item.name}</h3>
-                <p className="featured-condition">{item.condition}</p>
+                <div className="featured-meta">
+                  <span className="meta-badge">Size: {item.size}</span>
+                  <span className="meta-badge">Cond: {item.condition}</span>
+                  <span className="meta-badge">By: {item.owner}</span>
+                </div>
                 <div className="featured-footer">
-                  <span className="featured-price">{item.price}</span>
-                  <button className="trade-btn">Trade</button>
+                  <span className="featured-price">{item.points}</span>
+                  <div className="featured-actions">
+                    <button className="view-btn" onClick={() => console.log('Navigate to Item Details')}>Details</button>
+                    <button className="trade-btn" onClick={() => console.log('Open Exchange Request Modal')}>Request</button>
+                  </div>
                 </div>
               </div>
             </motion.div>

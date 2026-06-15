@@ -76,6 +76,40 @@
   box-shadow: 0 10px 20px rgba(255,255,255,0.1);
 }
 
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.hero-btn.secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.hero-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.hero-video-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: #a1a1aa;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.hero-video-link:hover {
+  color: #00f3ff;
+}
+
 @media (max-width: 768px) {
   .hero-title {
     font-size: 3.5rem;

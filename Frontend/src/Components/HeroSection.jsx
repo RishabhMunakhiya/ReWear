@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { PlayCircle } from 'lucide-react';
 import watchVideo from '../Assets/watch.mp4';
 import '../Styles/HeroSection.css';
 
@@ -28,15 +29,21 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
           >
-          <div className="hero-badge">NEW SPRING UPDATE</div>
+          <div className="hero-badge">AI-POWERED MATCHING</div>
           <h1 className="hero-title">
-            Your wardrobe deserves<br />to stand out
+            The future of sustainable<br />fashion exchange
           </h1>
           <p className="hero-subtitle">
-            Upload your clothes and let our AI platform transform them into<br />
-            polished, sustainable exchanges in seconds.
+            Swap your premium clothing with our community. Upload items,<br />
+            get AI-driven style matches, and reduce your carbon footprint instantly.
           </p>
-          <button className="hero-btn" onClick={() => setIsVideoOpen(true)}>Watch video</button>
+          <div className="hero-actions">
+            <button className="hero-btn" onClick={() => console.log('Navigate to Marketplace')}>Start Swapping</button>
+            <button className="hero-btn secondary" onClick={() => console.log('Navigate to Upload Item')}>Upload Your First Item</button>
+          </div>
+          <button className="hero-video-link" onClick={() => setIsVideoOpen(true)}>
+            <PlayCircle size={18} /> Watch how it works
+          </button>
           </motion.div>
         </motion.div>
       </div>

@@ -4,10 +4,10 @@ import { Menu, X } from 'lucide-react';
 import '../Styles/Navbar.css';
 
 const navLinks = [
+  { name: 'Explore', href: '#featured' },
+  { name: 'Exchange', href: '#services' },
+  { name: 'Community', href: '#testimonials' },
   { name: 'About', href: '#about' },
-  { name: 'Services', href: '#services' },
-  { name: 'Featured', href: '#featured' },
-  { name: 'How It Works', href: '#how-it-works' },
 ];
 
 const Navbar = () => {
@@ -62,8 +62,8 @@ const Navbar = () => {
         </div>
 
         <div className="nav-actions">
-          <button className="nav-waitlist">
-            <span>Join waitlist</span>
+          <button className="nav-waitlist" onClick={() => console.log('Navigate to Upload Item')}>
+            <span>Upload Item</span>
             <div className="waitlist-glow"></div>
           </button>
           

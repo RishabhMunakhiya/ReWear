@@ -50,8 +50,8 @@ const AboutSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <div className="card-glow"></div>
-            <h3 className="card-stat"><AnimatedNumber value={500} suffix="K+" /></h3>
-            <p className="card-label">Items Exchanged</p>
+            <h3 className="card-stat"><AnimatedNumber value={120} suffix="K+" /></h3>
+            <p className="card-label">Active Members</p>
           </motion.div>
           
           <motion.div 
@@ -62,8 +62,32 @@ const AboutSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="card-glow"></div>
+            <h3 className="card-stat"><AnimatedNumber value={500} suffix="K+" /></h3>
+            <p className="card-label">Total Swaps</p>
+          </motion.div>
+
+          <motion.div 
+            className="about-card glass-card"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <div className="card-glow"></div>
+            <h3 className="card-stat"><AnimatedNumber value={2} suffix="M+" /></h3>
+            <p className="card-label">Clothes Reused</p>
+          </motion.div>
+
+          <motion.div 
+            className="about-card glass-card"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <div className="card-glow"></div>
             <h3 className="card-stat"><AnimatedNumber value={2} suffix="M lbs" /></h3>
-            <p className="card-label">CO2 Prevented</p>
+            <p className="card-label">CO₂ Reduction</p>
           </motion.div>
 
           <motion.div 
@@ -71,13 +95,14 @@ const AboutSection = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
           >
             <div className="card-glow"></div>
             <h3>Our Mission</h3>
             <p>
               By leveraging machine learning to perfectly match tastes and sizes, 
               we ensure every piece of high-quality clothing finds a second life, 
+              building the largest sustainable fashion exchange in the world and 
               dramatically reducing the fashion industry's carbon footprint.
             </p>
           </motion.div>
