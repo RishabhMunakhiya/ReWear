@@ -1,6 +1,6 @@
 import React from 'react';
 import { MessageCircle, Globe, Mail } from 'lucide-react';
-import './Footer.css';
+import '../Styles/Footer.css';
 
 const Footer = () => {
   return (

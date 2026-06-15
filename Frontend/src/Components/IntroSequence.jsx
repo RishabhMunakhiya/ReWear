@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './IntroSequence.css';
+import '../Styles/IntroSequence.css';
 
 const IntroSequence = ({ onComplete }) => {
   const [fading, setFading] = useState(false);

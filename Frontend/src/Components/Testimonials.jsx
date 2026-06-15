@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import './Testimonials.css';
+import '../Styles/Testimonials.css';
 
 const testimonials = [
   { name: "Alex Chen", handle: "@alexc", review: "ReWear completely transformed how I cycle my wardrobe. The AI matches are eerie in their accuracy.", avatarClass: "avatar-1" },

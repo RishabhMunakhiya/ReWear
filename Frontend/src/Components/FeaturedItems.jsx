@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import './FeaturedItems.css';
+import '../Styles/FeaturedItems.css';
 
 const items = [
   { name: "Cyberpunk Jacket v2", condition: "Near Mint", price: "120 RX", tag: "Premium" },

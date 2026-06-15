@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import './HowItWorks.css';
+import '../Styles/HowItWorks.css';
 
 const steps = [
   { title: "Digitize", desc: "Upload clothes via AI scan." },

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { UploadCloud, RefreshCcw, Cpu, Leaf, Users } from 'lucide-react';
-import './ServicesSection.css';
+import '../Styles/ServicesSection.css';
 
 const services = [
   { icon: UploadCloud, title: "Upload Clothes", desc: "Digitize your wardrobe in seconds with our AI scanning tool." },

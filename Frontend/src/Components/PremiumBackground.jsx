@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import './PremiumBackground.css';
+import '../Styles/PremiumBackground.css';
 
 const PremiumBackground = () => {
   // Generate a few floating particles to create depth and atmosphere

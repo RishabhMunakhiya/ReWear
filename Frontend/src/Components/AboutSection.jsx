@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, useInView, animate } from 'framer-motion';
-import './AboutSection.css';
+import '../Styles/AboutSection.css';
 
 const AnimatedNumber = ({ value, suffix = "" }) => {
   const ref = useRef(null);

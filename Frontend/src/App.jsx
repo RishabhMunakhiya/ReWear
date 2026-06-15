@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import IntroSequence from './components/IntroSequence';
-import PremiumBackground from './components/PremiumBackground';
-import HeroSection from './components/HeroSection';
-import AboutSection from './components/AboutSection';
-import ServicesSection from './components/ServicesSection';
-import FeaturedItems from './components/FeaturedItems';
-import HowItWorks from './components/HowItWorks';
-import Testimonials from './components/Testimonials';
-import Footer from './components/Footer';
-import Navbar from './components/Navbar';
-import './App.css';
+import IntroSequence from './Components/IntroSequence';
+import PremiumBackground from './Components/PremiumBackground';
+import HeroSection from './Components/HeroSection';
+import AboutSection from './Components/AboutSection';
+import ServicesSection from './Components/ServicesSection';
+import FeaturedItems from './Components/FeaturedItems';
+import HowItWorks from './Components/HowItWorks';
+import Testimonials from './Components/Testimonials';
+import Footer from './Components/Footer';
+import Navbar from './Components/Navbar';
+import './Styles/App.css';
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import watchVideo from '../../watch.mp4';
-import './HeroSection.css';
+import watchVideo from '../Assets/watch.mp4';
+import '../Styles/HeroSection.css';
 
 const HeroSection = () => {
   const containerRef = useRef(null);
