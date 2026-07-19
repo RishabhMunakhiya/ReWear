@@ -1,8 +1,11 @@
 import React from 'react';
 import { MessageCircle, Globe, Mail } from 'lucide-react';
+import { useModal } from '../Contexts/ModalContext';
+import { scrollToSection } from '../Utils/ScrollUtil';
 import '../Styles/Footer.css';
 
 const Footer = () => {
+  const { openModal } = useModal();
   return (
     <footer className="footer-section">
       <div className="footer-glow"></div>
@@ -15,14 +18,14 @@ const Footer = () => {
           <div className="footer-links">
             <div className="link-group">
               <h4>Platform</h4>
-              <a href="#" onClick={(e) => { e.preventDefault(); console.log('Navigate to Marketplace'); }}>Explore</a>
-              <a href="#" onClick={(e) => { e.preventDefault(); console.log('Navigate to Upload Form'); }}>Upload Item</a>
-              <a href="#" onClick={(e) => { e.preventDefault(); console.log('Navigate to Community Page'); }}>Community</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection('featured'); }}>Explore</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); openModal('upload'); }}>Upload Item</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection('testimonials'); }}>Community</a>
             </div>
             <div className="link-group">
               <h4>Company</h4>
-              <a href="#how-it-works">How It Works</a>
-              <a href="#about">About</a>
+              <a href="#how-it-works" onClick={(e) => { e.preventDefault(); scrollToSection('how-it-works'); }}>How It Works</a>
+              <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}>About</a>
             </div>
             <div className="link-group">
               <h4>Connect</h4>

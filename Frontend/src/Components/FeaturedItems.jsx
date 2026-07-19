@@ -1,15 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useModal } from '../Contexts/ModalContext';
 import '../Styles/FeaturedItems.css';
 
-const items = [
-  { name: "Vintage Denim Jacket", condition: "Excellent", size: "Medium", category: "Outerwear", points: "150 Pts", owner: "AlexM" },
-  { name: "Oversized Minimalist Hoodie", condition: "Like New", size: "Large", category: "Streetwear", points: "80 Pts", owner: "SamStyles" },
-  { name: "Classic Formal Shirt", condition: "Good", size: "Small", category: "Formal", points: "60 Pts", owner: "Jordan99" },
-  { name: "Y2K Cargo Pants", condition: "Excellent", size: "32", category: "Streetwear", points: "120 Pts", owner: "TaylorV" },
+const fallbackItems = [
+  { title: "Vintage Denim Jacket", condition: "Excellent", size: "Medium", category: "Outerwear", rewearPointsValue: "150", owner: { name: "AlexM" } },
+  { title: "Oversized Minimalist Hoodie", condition: "Like New", size: "Large", category: "Streetwear", rewearPointsValue: "80", owner: { name: "SamStyles" } },
+  { title: "Classic Formal Shirt", condition: "Good", size: "Small", category: "Formal", rewearPointsValue: "60", owner: { name: "Jordan99" } },
+  { title: "Y2K Cargo Pants", condition: "Excellent", size: "32", category: "Streetwear", rewearPointsValue: "120", owner: { name: "TaylorV" } },
 ];
 
 const FeaturedItems = () => {
+  const { openModal } = useModal();
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const res = await fetch('http://localhost:5000/api/items');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.length > 0) {
+            setItems(data);
+          } else {
+            setItems(fallbackItems);
+          }
+        } else {
+          setItems(fallbackItems);
+        }
+      } catch (err) {
+        setItems(fallbackItems);
+      }
+    };
+    fetchItems();
+  }, []);
+
   return (
     <section id="featured" className="featured-section">
       <div className="featured-container">
@@ -35,21 +60,28 @@ const FeaturedItems = () => {
               transition={{ duration: 0.6, delay: idx * 0.15 }}
             >
               <div className="featured-image-placeholder">
-                <span className="featured-tag">{item.category}</span>
-                <div className="placeholder-shape"></div>
+                {item.image && (
+                  <img 
+                    src={`http://localhost:5000/${item.image.replace(/\\/g, '/')}`} 
+                    alt={item.title} 
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }} 
+                  />
+                )}
+                <span className="featured-tag" style={{ zIndex: 2 }}>{item.category}</span>
+                {!item.image && <div className="placeholder-shape"></div>}
               </div>
               <div className="featured-info">
-                <h3 className="featured-name">{item.name}</h3>
+                <h3 className="featured-name">{item.title || item.name}</h3>
                 <div className="featured-meta">
                   <span className="meta-badge">Size: {item.size}</span>
                   <span className="meta-badge">Cond: {item.condition}</span>
-                  <span className="meta-badge">By: {item.owner}</span>
+                  <span className="meta-badge">By: {item.owner?.name || item.owner}</span>
                 </div>
                 <div className="featured-footer">
-                  <span className="featured-price">{item.points}</span>
+                  <span className="featured-price">{item.rewearPointsValue || item.points} Pts</span>
                   <div className="featured-actions">
-                    <button className="view-btn" onClick={() => console.log('Navigate to Item Details')}>Details</button>
-                    <button className="trade-btn" onClick={() => console.log('Open Exchange Request Modal')}>Request</button>
+                    <button className="view-btn" onClick={() => openModal('itemDetails', item)}>Details</button>
+                    <button className="trade-btn" onClick={() => openModal('exchangeRequest', item)}>Request</button>
                   </div>
                 </div>
               </div>

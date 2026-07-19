@@ -10,7 +10,7 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="testimonials-section">
+    <section id="testimonials" className="testimonials-section">
       <div className="testimonials-container">
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}

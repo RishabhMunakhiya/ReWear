@@ -1,10 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { PlayCircle } from 'lucide-react';
+import { useModal } from '../Contexts/ModalContext';
+import { scrollToSection } from '../Utils/ScrollUtil';
 import watchVideo from '../Assets/watch.mp4';
 import '../Styles/HeroSection.css';
 
 const HeroSection = () => {
+  const { openModal } = useModal();
   const containerRef = useRef(null);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   
@@ -38,8 +41,8 @@ const HeroSection = () => {
             get AI-driven style matches, and reduce your carbon footprint instantly.
           </p>
           <div className="hero-actions">
-            <button className="hero-btn" onClick={() => console.log('Navigate to Marketplace')}>Start Swapping</button>
-            <button className="hero-btn secondary" onClick={() => console.log('Navigate to Upload Item')}>Upload Your First Item</button>
+            <button className="hero-btn" onClick={() => scrollToSection('featured')}>Start Swapping</button>
+            <button className="hero-btn secondary" onClick={() => openModal('upload')}>Upload Your First Item</button>
           </div>
           <button className="hero-video-link" onClick={() => setIsVideoOpen(true)}>
             <PlayCircle size={18} /> Watch how it works

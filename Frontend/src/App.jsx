@@ -1,42 +1,43 @@
-import { useState } from 'react';
-import IntroSequence from './Components/IntroSequence';
-import PremiumBackground from './Components/PremiumBackground';
-import HeroSection from './Components/HeroSection';
-import AboutSection from './Components/AboutSection';
-import ServicesSection from './Components/ServicesSection';
-import FeaturedItems from './Components/FeaturedItems';
-import HowItWorks from './Components/HowItWorks';
-import AIRecommendations from './Components/AIRecommendations';
-import Testimonials from './Components/Testimonials';
-import Footer from './Components/Footer';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import GlassModal from './Components/GlassModal';
 import Navbar from './Components/Navbar';
+import LandingPage from './Pages/LandingPage';
+import Dashboard from './Pages/Dashboard';
+import MyUploads from './Pages/MyUploads';
+import MyExchanges from './Pages/MyExchanges';
+import MyPoints from './Pages/MyPoints';
+import { ModalProvider } from './Contexts/ModalContext';
+import { AuthProvider, useAuth } from './Contexts/AuthContext';
 import './Styles/App.css';
 
+const ProtectedRoute = ({ children }) => {
+  const { token } = useAuth();
+  if (!token) {
+    return <Navigate to="/" replace />;
+  }
+  return children;
+};
+
 function App() {
-  const [showIntro, setShowIntro] = useState(true);
-
   return (
-    <>
-      {showIntro && <IntroSequence onComplete={() => setShowIntro(false)} />}
-      
-      <main className={`app-container ${!showIntro ? 'visible' : ''}`}>
-        <PremiumBackground />
-
-        <Navbar />
-
-        <div className="scroll-content">
-          <HeroSection />
-          <AboutSection />
-          <ServicesSection />
-          <FeaturedItems />
-          <HowItWorks />
-          <AIRecommendations />
-          <Testimonials />
-          <Footer />
-        </div>
-      </main>
-    </>
-  )
+    <AuthProvider>
+      <ModalProvider>
+        <Router>
+          <GlassModal />
+          <Navbar />
+          <div style={{ minHeight: '100vh', backgroundColor: 'var(--bg-primary)' }}>
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+              <Route path="/my-uploads" element={<ProtectedRoute><MyUploads /></ProtectedRoute>} />
+              <Route path="/my-exchanges" element={<ProtectedRoute><MyExchanges /></ProtectedRoute>} />
+              <Route path="/my-points" element={<ProtectedRoute><MyPoints /></ProtectedRoute>} />
+            </Routes>
+          </div>
+        </Router>
+      </ModalProvider>
+    </AuthProvider>
+  );
 }
 
 export default App;

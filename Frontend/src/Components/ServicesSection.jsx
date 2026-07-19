@@ -1,17 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { UploadCloud, RefreshCcw, Cpu, Leaf, Users } from 'lucide-react';
+import { useModal } from '../Contexts/ModalContext';
+import { scrollToSection } from '../Utils/ScrollUtil';
 import '../Styles/ServicesSection.css';
 
-const services = [
-  { icon: UploadCloud, title: "Upload Clothes", desc: "Digitize your wardrobe in seconds with our AI scanning tool." },
-  { icon: RefreshCcw, title: "Exchange System", desc: "Frictionless peer-to-peer trading with verified authenticity." },
-  { icon: Cpu, title: "AI Recommendations", desc: "Machine learning curates perfect matches for your style and size." },
-  { icon: Leaf, title: "Sustainable Fashion", desc: "Reduce carbon footprint through extended garment lifecycles." },
-  { icon: Users, title: "Community Marketplace", desc: "Connect with like-minded fashion enthusiasts globally." }
-];
-
 const ServicesSection = () => {
+  const { openModal } = useModal();
+
+  const services = [
+    { icon: UploadCloud, title: "Upload Clothes", desc: "Digitize your wardrobe in seconds with our AI scanning tool.", action: () => openModal('upload') },
+    { icon: RefreshCcw, title: "Exchange System", desc: "Frictionless peer-to-peer trading with verified authenticity.", action: () => openModal('exchangeProcess') },
+    { icon: Cpu, title: "AI Recommendations", desc: "Machine learning curates perfect matches for your style and size.", action: () => scrollToSection('ai-showcase') },
+    { icon: Leaf, title: "Sustainable Fashion", desc: "Reduce carbon footprint through extended garment lifecycles.", action: () => scrollToSection('about') },
+    { icon: Users, title: "Community Marketplace", desc: "Connect with like-minded fashion enthusiasts globally.", action: () => scrollToSection('featured') }
+  ];
   return (
     <section id="services" className="services-section">
       <div className="services-container">
@@ -35,6 +38,8 @@ const ServicesSection = () => {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
+              onClick={service.action}
+              style={{ cursor: 'pointer' }}
             >
               <div className="service-icon-wrapper">
                 <service.icon size={32} className="service-icon" />

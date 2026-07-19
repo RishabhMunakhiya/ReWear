@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Cpu, CheckCircle, RefreshCcw } from 'lucide-react';
+import { useModal } from '../Contexts/ModalContext';
 import '../Styles/AIRecommendations.css';
 
 const AIRecommendations = () => {
+  const { openModal } = useModal();
   return (
     <section id="ai-showcase" className="ai-section">
       <div className="ai-container">
@@ -28,7 +30,7 @@ const AIRecommendations = () => {
               <li><CheckCircle size={18} className="ai-icon"/> Personalized Style Curations</li>
               <li><CheckCircle size={18} className="ai-icon"/> Automated Value Authentication</li>
             </ul>
-            <button className="hero-btn secondary" style={{ marginTop: '20px' }} onClick={() => console.log('Navigate to AI Match Info')}>
+            <button className="hero-btn secondary" style={{ marginTop: '20px' }} onClick={() => openModal('aiInfo')}>
               Learn about our AI
             </button>
           </motion.div>
