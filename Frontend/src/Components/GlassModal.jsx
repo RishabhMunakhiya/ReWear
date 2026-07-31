@@ -159,7 +159,7 @@ const UploadItemModal = ({ closeModal }) => {
     data.append('image', file);
 
     try {
-      const res = await fetch('http://localhost:5000/api/items', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/items`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` },
         body: data
@@ -233,7 +233,7 @@ const ItemDetailsModal = ({ data, closeModal }) => {
         <div className="details-image-placeholder" style={{ position: 'relative', overflow: 'hidden' }}>
           {data.image ? (
             <img 
-              src={data.image.startsWith('http') ? data.image : `http://localhost:5000/${data.image.replace(/\\/g, '/')}`} 
+              src={data.image.startsWith('http') ? data.image : `${import.meta.env.VITE_API_URL}/${data.image.replace(/\\/g, '/')}`} 
               alt={data.title || data.name} 
               style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }} 
             />

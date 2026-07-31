@@ -10,7 +10,7 @@ const MyPoints = () => {
   useEffect(() => {
     const fetchPoints = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/users/points', {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/users/points`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (res.ok) {

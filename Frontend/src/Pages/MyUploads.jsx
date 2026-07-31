@@ -14,7 +14,7 @@ const MyUploads = () => {
 
   const fetchItems = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/items', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/items`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) {
@@ -31,7 +31,7 @@ const MyUploads = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this item?')) {
       try {
-        const res = await fetch(`http://localhost:5000/api/items/${id}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/items/${id}`, {
           method: 'DELETE',
           headers: { Authorization: `Bearer ${token}` }
         });
@@ -60,7 +60,7 @@ const MyUploads = () => {
               <div style={{ height: '200px', position: 'relative', overflow: 'hidden' }}>
                 {item.image && (
                   <img 
-                    src={item.image.startsWith('http') ? item.image : `http://localhost:5000/${item.image.replace(/\\/g, '/')}`} 
+                    src={item.image.startsWith('http') ? item.image : `${import.meta.env.VITE_API_URL}/${item.image.replace(/\\/g, '/')}`} 
                     alt={item.title} 
                     style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }} 
                   />

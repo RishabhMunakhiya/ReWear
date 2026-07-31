@@ -13,7 +13,7 @@ const MyExchanges = () => {
 
   const fetchExchanges = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/exchange', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/exchange`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) {
@@ -28,7 +28,7 @@ const MyExchanges = () => {
 
   const handleAction = async (action, requestId) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/exchange/${action}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/exchange/${action}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify({ requestId })

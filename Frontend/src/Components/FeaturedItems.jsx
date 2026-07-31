@@ -17,7 +17,7 @@ const FeaturedItems = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/items');
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/items`);
         if (res.ok) {
           const data = await res.json();
           if (data.length > 0) {
@@ -62,7 +62,7 @@ const FeaturedItems = () => {
               <div className="featured-image-placeholder">
                 {item.image && (
                   <img 
-                    src={item.image.startsWith('http') ? item.image : `http://localhost:5000/${item.image.replace(/\\/g, '/')}`} 
+                    src={item.image.startsWith('http') ? item.image : `${import.meta.env.VITE_API_URL}/${item.image.replace(/\\/g, '/')}`} 
                     alt={item.title} 
                     style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }} 
                   />

@@ -11,9 +11,9 @@ const Dashboard = () => {
     const fetchStats = async () => {
       try {
         const [pointsRes, sustRes, itemsRes] = await Promise.all([
-          fetch('http://localhost:5000/api/users/points', { headers: { Authorization: `Bearer ${token}` } }),
-          fetch('http://localhost:5000/api/users/sustainability', { headers: { Authorization: `Bearer ${token}` } }),
-          fetch('http://localhost:5000/api/items', { headers: { Authorization: `Bearer ${token}` } })
+          fetch(`${import.meta.env.VITE_API_URL}/api/users/points`, { headers: { Authorization: `Bearer ${token}` } }),
+          fetch(`${import.meta.env.VITE_API_URL}/api/users/sustainability`, { headers: { Authorization: `Bearer ${token}` } }),
+          fetch(`${import.meta.env.VITE_API_URL}/api/items`, { headers: { Authorization: `Bearer ${token}` } })
         ]);
         
         const pointsData = pointsRes.ok ? await pointsRes.json() : { rewearPoints: 0 };
