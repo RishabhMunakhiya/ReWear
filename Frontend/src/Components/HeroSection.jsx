@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { PlayCircle } from 'lucide-react';
 import { useModal } from '../Contexts/ModalContext';
 import { scrollToSection } from '../Utils/ScrollUtil';
-import watchVideo from '../Assets/watch.mp4';
+import watchVideo from '../assets/watch.mp4';
 import '../Styles/HeroSection.css';
 
 const HeroSection = () => {
