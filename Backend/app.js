@@ -19,7 +19,9 @@ const __dirname = path.dirname(__filename);
 const app = express();
 
 // Security Middleware
-app.use(helmet());
+app.use(helmet({
+  crossOriginResourcePolicy: false,
+}));
 app.use(cors());
 app.use(express.json());
 

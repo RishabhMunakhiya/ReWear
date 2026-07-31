@@ -62,7 +62,7 @@ const FeaturedItems = () => {
               <div className="featured-image-placeholder">
                 {item.image && (
                   <img 
-                    src={`http://localhost:5000/${item.image.replace(/\\/g, '/')}`} 
+                    src={item.image.startsWith('http') ? item.image : `http://localhost:5000/${item.image.replace(/\\/g, '/')}`} 
                     alt={item.title} 
                     style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }} 
                   />

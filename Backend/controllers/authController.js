@@ -31,12 +31,10 @@ export const registerUser = asyncHandler(async (req, res) => {
     throw new Error('User already exists');
   }
 
-  const hashedPassword = await bcrypt.hash(password, 10);
-
   const user = await User.create({
     name,
     email,
-    password: hashedPassword,
+    password: password,
   });
 
   if (user) {

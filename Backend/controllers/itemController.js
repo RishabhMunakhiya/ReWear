@@ -27,7 +27,7 @@ export const uploadItem = asyncHandler(async (req, res) => {
     category,
     size,
     condition,
-    image: req.file ? `uploads/${req.file.filename}` : '',
+    image: req.file ? req.file.path : '',
     owner: req.user._id,
     rewearPointsValue: points
   });

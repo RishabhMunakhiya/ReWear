@@ -230,8 +230,16 @@ const ItemDetailsModal = ({ data, closeModal }) => {
   return (
     <div className="modal-inner">
       <div className="details-layout">
-        <div className="details-image-placeholder">
-          <span>{data.category} Image</span>
+        <div className="details-image-placeholder" style={{ position: 'relative', overflow: 'hidden' }}>
+          {data.image ? (
+            <img 
+              src={data.image.startsWith('http') ? data.image : `http://localhost:5000/${data.image.replace(/\\/g, '/')}`} 
+              alt={data.title || data.name} 
+              style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }} 
+            />
+          ) : (
+            <span>{data.category} Image</span>
+          )}
         </div>
         <div className="details-info">
           <h2>{data.title || data.name}</h2>

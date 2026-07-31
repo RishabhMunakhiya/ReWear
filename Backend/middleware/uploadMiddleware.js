@@ -1,27 +1,26 @@
 import multer from 'multer';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import { v2 as cloudinary } from 'cloudinary';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
+import dotenv from 'dotenv';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const uploadDir = path.join(__dirname, '..', 'uploads');
+dotenv.config();
 
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir);
-}
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
-const localStorage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, uploadDir);
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'rewear_items',
+    allowed_formats: ['jpg', 'png', 'jpeg', 'webp'],
   },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname));
-  }
 });
 
 const upload = multer({
-  storage: localStorage,
+  storage: storage,
   limits: { fileSize: 5000000 }, // 5MB limit
 });
 
